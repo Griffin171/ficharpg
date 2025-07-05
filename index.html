@@ -6,6 +6,7 @@
     <title>Ficha Ordem Paranormal</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">
@@ -22,6 +23,8 @@
                         <option value="Especialista">Especialista</option>
                         <option value="Ocultista">Ocultista</option>
                     </select>
+                    <label for="def">Defesa</label>
+                    <input type="number" id="def" value="0" class="detail-input">
                   </div>
                   <div id="origem-block">
                     <label for="character-origin" class="label-details">Origem</label>
@@ -52,10 +55,14 @@
                         <option value="Universitário">Universitário</option>
                         <option value="Vítima">Vítima</option>
                     </select>
+                    <label for="esquiva">Esquiva</label>
+                    <input type="number" id="esquiva" value="0" class="detail-input">
                   </div>
                   <div id="idade-block">
                     <label for="character-age">Idade</label>
                     <input type="number" id="character-age" placeholder="Idade" class="detail-input">
+                    <label for="dtr">DT Rituais</label>
+                    <input type="number" id="dtr" value="10" class="detail-input">
                   </div>
                 </div>
             </div>
@@ -465,7 +472,7 @@
             </div>
         </div>
     </div>
-
+    <iframe src="https://griffin171.github.io/diceRPG/" frameborder="0" width="100%" height="950px"></iframe>
     <script src="script.js"></script>
 </body>
 </html>
