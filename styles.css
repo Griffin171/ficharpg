@@ -759,3 +759,102 @@ input[type="number"]::-webkit-outer-spin-button {
 .error-message.show {
     display: block;
 }
+@media (max-width: 480px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    max-width: 100%;
+    flex: unset;
+  }
+
+  .attributes-section {
+    background-size: 200px 200px;
+    background-position: top 0px left 50%;
+    align-items: center;
+    height: 400px;
+  }
+
+  .attribute.for {
+    margin-left: 11%;
+    margin-top: 5%;
+  }
+
+  .attribute.agi {
+    margin-left: 11%;
+    margin-top: -2%;
+  }
+
+  .attribute.pre{
+    margin-top: 11%;
+    left: -2%;
+  }
+
+  .attribute.int{
+    margin-top: 5%;
+    right: -19%;
+  }
+
+  .attribute.vig{
+    margin-left: 15%;
+    margin-top: 12%;
+  }
+
+  .attribute-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .attribute {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nex-section {
+    margin-right: 0;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .bar-inputs input {
+    width: 40px;
+    font-size: 0.9em;
+  }
+
+  .character-details {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .save-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pericia-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pericia-total {
+    font-size: 1em;
+  }
+
+  .tab-content {
+    max-height: 60vh;
+  }
+}
