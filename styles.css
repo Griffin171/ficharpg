@@ -45,7 +45,7 @@ option{
     padding: 10px;
     border-bottom: 2px solid #6a4c93;
 }
-label{font-weight: bold; font-size: 18px;}
+label{font-weight: bold; font-size: 18px; margin-top: 5px;}
 #classe-block{
     display: flex;
     flex-direction: column;
@@ -55,6 +55,18 @@ label{font-weight: bold; font-size: 18px;}
     flex-direction: column;
 }
 #idade-block{
+    display: flex;
+    flex-direction: column;
+}
+#def-block{
+    display: flex;
+    flex-direction: column;
+}
+#esquiva-block{
+    display: flex;
+    flex-direction: column;
+}
+#dt-rituais{
     display: flex;
     flex-direction: column;
 }
