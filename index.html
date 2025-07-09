@@ -13,7 +13,15 @@
         <!-- Header with Character Info -->
         <header class="character-header">
             <div class="character-info">
-                <input type="text" id="character-name" placeholder="Nome do Personagem" class="character-name-input">
+                <div class="character-name-image">
+                    <div class="image-upload-wrapper">
+                        <label for="character-image">
+                            <img id="character-preview" src="" alt="Imagem do personagem" class="character-image">
+                        </label>
+                        <input type="file" id="character-image" accept="image/*" style="display: none;">
+                    </div>
+                    <input type="text" id="character-name" placeholder="Nome do Personagem" class="character-name-input">
+                </div>
                 <div class="character-details">
                   <div id="classe-block">
                     <label for="character-class">Classe</label>
