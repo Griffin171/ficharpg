@@ -9,6 +9,7 @@ class CharacterSheet {
             def: 0,
             esquiva: 0,
             dtr: 10,
+            imageBase64: '',
             vida: { atual: 10, max: 10 },
             sanidade: { atual: 10, max: 10 },
             esforco: { atual: 10, max: 10 },
@@ -28,12 +29,31 @@ class CharacterSheet {
         
         this.init();
     }
+    setupImageListener() {
+        const imageInput = document.getElementById('character-image');
+        const preview = document.getElementById('character-preview');
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.character.imageBase64 = reader.result;
+                preview.src = reader.result;
+                this.autoSave();
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
 
     init() {
         this.loadCharacter();
         this.setupEventListeners();
         this.updateAllCalculations();
         this.updateNexDisplay();
+        this.setupImageListener();
     }
 
     setupEventListeners() {
@@ -402,6 +422,10 @@ class CharacterSheet {
         });
 
         document.getElementById('nex-slider').value = this.character.nex;
+
+        if (this.character.imageBase64) {
+            document.getElementById('character-preview').src = this.character.imageBase64;
+        }
 
         document.querySelectorAll('.pericia-item').forEach(item => {
             const name = item.querySelector('.pericia-name').textContent;
