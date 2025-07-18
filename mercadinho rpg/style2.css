@@ -1,9 +1,12 @@
+/* Responsividade geral para inputs e seções */
 body{
     font-family: Arial, sans-serif;
     background: #181a1b;
     color: #e0e0e0;
     margin: 0;
     padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
     
 h1, h2 {
@@ -13,41 +16,50 @@ h1, h2 {
 
 body {
     font-family: Arial, sans-serif;
-    background: #181a1b;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    min-height: 100vh;
+    html {
+        font-size: 18px;
+    }
+    body {
+        padding: 8px;
+        font-size: 1.08em;
+    }
+    h1, h2 {
+        font-size: 1.5em;
+    }
+    .saldo-section {
+        font-size: 1.08em;
+        padding: 0 2vw;
+    }
+    #carrinho-lista, #itens-lista {
+        padding: 0 2vw;
+    }
+    #carrinho-total {
+        font-size: 1.18em;
+    }
+    .item, .carrinho-item {
+        font-size: 1.08em;
+    }
+    .add-carrinho-btn, .remover-carrinho-btn, #finalizarCompraBtn, #setSaldoBtn {
+        width: auto;
+        padding: 14px 18px;
+        font-size: 1.08em;
+        padding: 8px;
+        font-size: 1.08em;
 }
-h1, h2 {
-    text-align: center;
-    color: #fafafa;
-}
-.saldo-section {
-    margin-bottom: 20px;
-    justify-content: center;
-    text-align: center;
-}
-#itens-lista, #carrinho-lista {
-    display: block;
-    width: 100%;
-}
-.tab-content {
-    display: none;
-    width: 100%;
-}
-.tab-content[style*="display:block"] {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    width: 100%;
-}
-
-@media (max-width: 700px) {
-    .tab-content[style*="display:block"] {
         grid-template-columns: 1fr;
         gap: 10px;
+    }
+@media (max-width: 400px) {
+    html {
+        font-size: 20px;
+    }
+    .tab-btn {
+        font-size: 1em;
+        min-width: 70px;
+        padding: 10px 2px;
+    }
+    .modal-content {
+        font-size: 1.08em;
     }
 }
 .item, .carrinho-item {
@@ -236,7 +248,7 @@ h1, h2 {
         font-size: 1.1em;
     }
     .add-carrinho-btn, .remover-carrinho-btn, #finalizarCompraBtn, #setSaldoBtn {
-        width: 100%;
+        width: auto;
         padding: 10px 16px;
         font-size: 1em;
     }
