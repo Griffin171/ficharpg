@@ -32,6 +32,19 @@ option{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
+#btnMercado {
+    background: linear-gradient(135deg, #6a4c93, #4a326b);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 .character-info {
     display: grid;
     align-items: center;
