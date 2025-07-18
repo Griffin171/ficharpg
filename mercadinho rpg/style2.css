@@ -1,0 +1,254 @@
+body{
+    font-family: Arial, sans-serif;
+    background: #181a1b;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+}
+    
+h1, h2 {
+    text-align: center;
+    color: #fafafa;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #181a1b;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+h1, h2 {
+    text-align: center;
+    color: #fafafa;
+}
+.saldo-section {
+    margin-bottom: 20px;
+    justify-content: center;
+    text-align: center;
+}
+#itens-lista, #carrinho-lista {
+    display: block;
+    width: 100%;
+}
+.tab-content {
+    display: none;
+    width: 100%;
+}
+.tab-content[style*="display:block"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .tab-content[style*="display:block"] {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+.item, .carrinho-item {
+    background: #23272a;
+    border: 1px solid #333;
+    padding: 14px;
+    min-width: 0;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px #0003;
+    word-break: break-word;
+}
+.item-nome, .carrinho-item-nome {
+    font-weight: bold;
+    color: #fff;
+}
+.item-preco, .carrinho-item-preco {
+    margin-bottom: 5px;
+    color: #b2ffb2;
+}
+.add-carrinho-btn, .remover-carrinho-btn, #finalizarCompraBtn, #setSaldoBtn {
+    margin-top: 5px;
+    padding: 6px 12px;
+    background: #388e3c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1em;
+    width: auto;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.add-carrinho-btn:hover, .remover-carrinho-btn:hover, #finalizarCompraBtn:hover, #setSaldoBtn:hover {
+    background: #66bb6a;
+}
+#carrinho-total {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #b2ffb2;
+}
+.tabs {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+}
+.tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #23272a;
+    color: #b2ffb2;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    margin-right: 2px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1em;
+    min-width: 120px;
+}
+.tab-btn.active {
+    background: #388e3c;
+    color: #fff;
+}
+@media (max-width: 500px) {
+    .tab-btn {
+        font-size: 0.95em;
+        min-width: 90px;
+        padding: 7px 6px;
+    }
+}
+.item-desc {
+    font-size: 0.95em;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    font-style: italic;
+}
+.info-btn {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 1001;
+    background: #23272a;
+    color: #b2ffb2;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0006;
+    transition: background 0.2s;
+}
+.info-btn:hover {
+    background: #388e3c;
+    color: #fff;
+}
+@media (max-width: 500px) {
+    .info-btn {
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 1.2em;
+    }
+}
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0,0,0,0.7);
+}
+.modal-content {
+    background: #23272a;
+    margin: 60px auto;
+    padding: 24px 24px 16px 24px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 420px;
+    color: #e0e0e0;
+    position: relative;
+    box-shadow: 0 4px 24px #000a;
+}
+@media (max-width: 500px) {
+    .modal-content {
+        margin: 30px auto;
+        padding: 12px 6px 10px 6px;
+        max-width: 98vw;
+        font-size: 0.98em;
+    }
+}
+.close {
+    color: #b2ffb2;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.close:hover {
+    color: #fff;
+}
+.modal-text {
+    max-height: 260px;
+    overflow-y: auto;
+    word-break: break-word;
+    margin-top: 18px;
+    font-size: 1em;
+}
+@media (max-width: 500px) {
+    .modal-text {
+        max-height: 180px;
+        font-size: 0.97em;
+    }
+}
+/* Responsividade geral para inputs e seções */
+@media (max-width: 700px) {
+    body {
+        padding: 8px;
+    }
+    .saldo-section {
+        font-size: 1em;
+        padding: 0 2vw;
+    }
+    #carrinho-lista, #itens-lista {
+        padding: 0 2vw;
+    }
+    #carrinho-total {
+        font-size: 1.1em;
+    }
+    .add-carrinho-btn, .remover-carrinho-btn, #finalizarCompraBtn, #setSaldoBtn {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .tab-btn {
+        font-size: 0.9em;
+        min-width: 70px;
+        padding: 6px 2px;
+    }
+    .modal-content {
+        font-size: 0.93em;
+    }
+}
