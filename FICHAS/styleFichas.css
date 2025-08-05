@@ -1,0 +1,928 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+option{
+    color: black;
+}
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+
+/* Header Styles */
+.character-header {
+    background: linear-gradient(135deg, #2a2a2a, #333333);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+#btnMercado {
+    background: linear-gradient(135deg, #6a4c93, #4a326b);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.character-info {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+}
+.image-upload-wrapper {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #6a4c93;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    margin-bottom: 12px;
+}
+.character-name-image{
+    display: flex;
+}
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.character-name-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 2px solid #6a4c93;
+}
+label{font-weight: bold; font-size: 18px; margin-top: 5px;}
+#classe-block{
+    display: flex;
+    flex-direction: column;
+}
+#origem-block{
+    display: flex;
+    flex-direction: column;
+}
+#idade-block{
+    display: flex;
+    flex-direction: column;
+}
+#def-block{
+    display: flex;
+    flex-direction: column;
+}
+#esquiva-block{
+    display: flex;
+    flex-direction: column;
+}
+#dt-rituais{
+    display: flex;
+    flex-direction: column;
+}
+.character-details{
+    margin-top: 10px;
+    display: grid;
+    justify-content: left;
+}
+.character-name-input:focus {
+    outline: none;
+    border-bottom-color: #9a7fc7;
+}
+
+.character-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.detail-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.detail-input:focus {
+    outline: none;
+    border-color: #6a4c93;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+    min-height: 600px;
+}
+
+.left-column {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.right-column {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Status Bars */
+.status-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.status-bar label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.bar-container {
+    position: relative;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+}
+
+.vida .bar-fill {
+    background: linear-gradient(90deg, #ff4444, #cc0000);
+}
+
+.sanidade .bar-fill {
+    background: linear-gradient(90deg, #4444ff, #0000cc);
+}
+
+.esforco .bar-fill {
+    background: linear-gradient(90deg, #ffdd44, #ccaa00);
+}
+
+.bar-inputs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bar-inputs input {
+    width: 60px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.bar-inputs input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.bar-inputs span {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Attributes Section */
+.attributes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    background-image: url(https://crisordemparanormal.com/assets/attributes-V37qZCrP.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+}
+
+.attributes-pentagon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attribute-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    
+}
+
+.attribute {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.attribute:hover {
+    transform: scale(1.1);
+}
+
+.attribute.for {
+    top: 45%;
+    left: -15px;
+    transform: translateX(-50%);
+}
+
+.attribute.agi {
+    top: 15%;
+    left: 39%;
+    transform: translateX(-50%);
+}
+
+.attribute.int {
+    top: 60%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+.attribute.pre {
+    top: 115%;
+    right: 160px;
+    transform: translateY(-50%);
+}
+
+.attribute.vig {
+    top: 115%;
+    left: 69%;
+    transform: translate(-50%, -50%);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.attr-label {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.attribute input {
+    width: 30px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.attribute input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* NEX Section */
+.nex-section {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+
+.nex-section label {
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #9a7fc7;
+}
+
+#nex-slider {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+#nex-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #6a4c93;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#nex-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #6a4c93;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.nex-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.nex-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6a4c93, #9a7fc7);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Tabs */
+.tabs-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+}
+
+.tab-buttons {
+    display: flex;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.tab-button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+    background: #6a4c93;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(106, 76, 147, 0.3);
+}
+
+.tab-content {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Perícias Grid */
+.pericias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+}
+
+.pericia-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 10px;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.pericia-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.pericia-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.pericia-attr {
+    color: #9a7fc7;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.pericia-nivel {
+    min-width: 120px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 5px;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.pericia-nivel:focus {
+    outline: none;
+    border-color: #6a4c93;
+}
+
+.pericia-nivel option {
+    background: #2a2a2a;
+    color: #000000;
+}
+
+.pericia-total {
+    font-weight: bold;
+    color: #ffdd44;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Forms */
+.add-item-form,
+.add-ritual-form,
+.add-ability-form {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.add-item-form h3,
+.add-ritual-form h3,
+.add-ability-form h3 {
+    margin-bottom: 15px;
+    color: #9a7fc7;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+    outline: none;
+    border-color: #6a4c93;
+}
+
+.form-grid textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.form-grid select {
+    cursor: pointer;
+}
+
+.form-grid select option {
+    background: #2a2a2a;
+    color: #000000;
+}
+
+/* Buttons */
+.btn-add,
+.btn-save,
+.btn-load,
+.btn-reset {
+    background: linear-gradient(135deg, #6a4c93, #4a326b);
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.btn-add:hover,
+.btn-save:hover,
+.btn-load:hover {
+    background: linear-gradient(135deg, #9a7fc7, #6a4c93);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 76, 147, 0.4);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #cc4444, #992222);
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #ff6666, #cc4444);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(204, 68, 68, 0.4);
+}
+
+/* Item/Ritual/Ability Lists */
+.items-list,
+.rituals-list,
+.abilities-list {
+    display: grid;
+    gap: 15px;
+}
+
+.item-card,
+.ritual-card,
+.ability-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.item-card:hover,
+.ritual-card:hover,
+.ability-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.item-card h4,
+.ritual-card h4,
+.ability-card h4 {
+    color: #9a7fc7;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.item-card p,
+.ritual-card p,
+.ability-card p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.item-card .item-stats,
+.ritual-card .ritual-stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #cccccc;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #cc4444;
+    border: none;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #ff6666;
+}
+
+/* Save Controls */
+.save-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .attributes-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .attribute-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .attribute {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .tab-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .tab-button {
+        text-align: center;
+    }
+    
+    .pericias-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .save-controls {
+        flex-direction: column;
+    }
+    
+    .status-bars {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .character-name-input {
+        font-size: 1.5em;
+    }
+    
+    .character-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .pericia-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .pericia-item .pericia-name {
+        grid-column: 1 / -1;
+    }
+    
+    .pericia-item .pericia-attr {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6a4c93;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9a7fc7;
+}
+
+/* Animation for loading */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Validation styles */
+.invalid {
+    border-color: #ff6666 !important;
+    background-color: rgba(255, 102, 102, 0.1) !important;
+}
+
+.error-message {
+    color: #ff6666;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+@media (max-width: 480px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    max-width: 100%;
+    flex: unset;
+  }
+
+  .attributes-section {
+    background-size: 200px 200px;
+    background-position: top 0px left 50%;
+    align-items: center;
+    height: 400px;
+  }
+
+  .attribute.for {
+    margin-left: 11%;
+    margin-top: 5%;
+  }
+
+  .attribute.agi {
+    margin-left: 11%;
+    margin-top: -2%;
+  }
+
+  .attribute.pre{
+    margin-top: 11%;
+    left: -2%;
+  }
+
+  .attribute.int{
+    margin-top: 5%;
+    right: -19%;
+  }
+
+  .attribute.vig{
+    margin-left: 15%;
+    margin-top: 12%;
+  }
+
+  .attribute-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .attribute {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nex-section {
+    margin-right: 0;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .bar-inputs input {
+    width: 40px;
+    font-size: 0.9em;
+  }
+
+  .character-details {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .save-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pericia-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pericia-total {
+    font-size: 1em;
+  }
+
+  .tab-content {
+    max-height: 60vh;
+  }
+}
+.fichas-abas {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.ficha-tab {
+  padding: 0.4rem 1rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ficha-tab:hover {
+  background: #444;
+}

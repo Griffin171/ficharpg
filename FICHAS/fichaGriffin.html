@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Ordem Paranormal</title>
+    <link rel="stylesheet" href="styleFichas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Character Info -->
+        <header class="character-header">
+            <button onclick="window.location.href = '../mercadinho rpg/mercadinho.html'" id="btnMercado">Mercado</button>
+            <div class="character-info">
+                <div class="character-name-image">
+                    <div class="image-upload-wrapper">
+                        <label for="character-image">
+                            <img id="character-preview" src="" alt="Imagem do personagem" class="character-image">
+                        </label>
+                        <input type="file" id="character-image" accept="image/*" style="display: none;">
+                    </div>
+                    <input type="text" id="character-name" placeholder="Nome do Personagem" class="character-name-input">
+                </div>
+                <div class="character-details">
+                  <div id="classe-block">
+                    <label for="character-class">Classe</label>
+                    <select id="character-class" class="detail-input">
+                        <option value="">Selecione uma Classe</option>
+                        <option value="Combatente">Combatente</option>
+                        <option value="Especialista">Especialista</option>
+                        <option value="Ocultista">Ocultista</option>
+                    </select>
+                    <label for="def">Defesa</label>
+                    <input type="number" id="def" value="0" class="detail-input">
+                  </div>
+                  <div id="origem-block">
+                    <label for="character-origin" class="label-details">Origem</label>
+                    <select id="character-origin" class="detail-input">
+                        <option value="">Selecione uma Origem</option>
+                        <option value="Acadêmico">Acadêmico</option>
+                        <option value="Amnésico">Amnésico</option>
+                        <option value="Artista">Artista</option>
+                        <option value="Atleta">Atleta</option>
+                        <option value="Chef">Chef</option>
+                        <option value="Criminoso">Criminoso</option>
+                        <option value="Cultista Arrependido">Cultista Arrependido</option>
+                        <option value="Desgarrado">Desgarrado</option>
+                        <option value="Engenheiro">Engenheiro</option>
+                        <option value="Executivo">Executivo</option>
+                        <option value="Investigador">Investigador</option>
+                        <option value="Lutador">Lutador</option>
+                        <option value="Médico">Médico</option>
+                        <option value="Militar">Militar</option>
+                        <option value="Operário">Operário</option>
+                        <option value="Policial">Policial</option>
+                        <option value="Religioso">Religioso</option>
+                        <option value="Servidor Público">Servidor Público</option>
+                        <option value="Socialite">Socialite</option>
+                        <option value="Teórico da Conspiração">Teórico da Conspiração</option>
+                        <option value="Trabalhador Rural">Trabalhador Rural</option>
+                        <option value="Trambiqueiro">Trambiqueiro</option>
+                        <option value="Universitário">Universitário</option>
+                        <option value="Vítima">Vítima</option>
+                    </select>
+                    <label for="esquiva">Esquiva</label>
+                    <input type="number" id="esquiva" value="0" class="detail-input">
+                  </div>
+                  <div id="idade-block">
+                    <label for="character-age">Idade</label>
+                    <input type="number" id="character-age" placeholder="Idade" class="detail-input">
+                    <label for="dtr">DT Rituais</label>
+                    <input type="number" id="dtr" value="10" class="detail-input">
+                  </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content - Horizontal Layout -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Status Bars -->
+                <div class="status-bars">
+                    <div class="status-bar vida">
+                        <label>Vida</label>
+                        <div class="bar-container">
+                            <div class="bar-fill" id="vida-fill"></div>
+                            <div class="bar-inputs">
+                                <input type="number" id="vida-atual" value="10" min="0">
+                                <span>/</span>
+                                <input type="number" id="vida-max" value="10" min="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-bar sanidade">
+                        <label>Sanidade</label>
+                        <div class="bar-container">
+                            <div class="bar-fill" id="sanidade-fill"></div>
+                            <div class="bar-inputs">
+                                <input type="number" id="sanidade-atual" value="10" min="0">
+                                <span>/</span>
+                                <input type="number" id="sanidade-max" value="10" min="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-bar esforco">
+                        <label>Esforço</label>
+                        <div class="bar-container">
+                            <div class="bar-fill" id="esforco-fill"></div>
+                            <div class="bar-inputs">
+                                <input type="number" id="esforco-atual" value="10" min="0">
+                                <span>/</span>
+                                <input type="number" id="esforco-max" value="10" min="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attributes and NEX -->
+                <div class="attributes-section">
+                    <div class="attributes-pentagon">
+                        <div class="attribute-container">
+                            <div class="attribute for" data-attr="for">
+                                
+                                <input type="number" id="attr-for" min="1" max="20" value="1">
+                            </div>
+                            <div class="attribute agi" data-attr="agi">
+                                
+                                <input type="number" id="attr-agi" min="1" max="20" value="1">
+                            </div>
+                            <div class="attribute int" data-attr="int">
+                                
+                                <input type="number" id="attr-int" min="1" max="20" value="1">
+                            </div>
+                            <div class="attribute pre" data-attr="pre">
+                                
+                                <input type="number" id="attr-pre" min="1" max="20" value="1">
+                            </div>
+                            <div class="attribute vig" data-attr="vig">
+                                
+                                <input type="number" id="attr-vig" min="1" max="20" value="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nex-section">
+                        <label>NEX: <span id="nex-value">5%</span></label>
+                        <input type="range" id="nex-slider" min="5" max="99" step="1" value="5">
+                        <div class="nex-bar">
+                            <div class="nex-fill" id="nex-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Tabs -->
+                <div class="tabs-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="pericias">
+                            <i class="fas fa-dice-d20"></i> Perícias
+                        </button>
+                        <button class="tab-button" data-tab="itens">
+                            <i class="fas fa-backpack"></i> Itens
+                        </button>
+                        <button class="tab-button" data-tab="rituais">
+                            <i class="fas fa-magic"></i> Rituais
+                        </button>
+                        <button class="tab-button" data-tab="habilidades">
+                            <i class="fas fa-star"></i> Habilidades
+                        </button>
+                    </div>
+
+                    <!-- Perícias Tab -->
+                    <div id="pericias" class="tab-content active">
+                        <div class="pericias-grid">
+                            <div class="pericia-item" data-attr="pre">
+                                <span class="pericia-name">Adestramento</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Pontaria</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="for">
+                                <span class="pericia-name">Atletismo</span>
+                                <span class="pericia-attr">(FOR)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Crime</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="pre">
+                                <span class="pericia-name">Diplomacia</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="pre">
+                                <span class="pericia-name">Enganação</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="vig">
+                                <span class="pericia-name">Fortitude</span>
+                                <span class="pericia-attr">(VIG)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Furtividade</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="pre">
+                                <span class="pericia-name">Intimidação</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Intuição</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Investigação</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="for">
+                                <span class="pericia-name">Luta</span>
+                                <span class="pericia-attr">(FOR)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Medicina</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Ocultismo</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Percepção</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Pilotagem</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Reflexos</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Religião</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Tecnologia</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="vig">
+                                <span class="pericia-name">Vontade</span>
+                                <span class="pericia-attr">(VIG)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Acrobacia</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="pre">
+                                <span class="pericia-name">Artes</span>
+                                <span class="pericia-attr">(PRE)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Atualidades</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Ciências</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="agi">
+                                <span class="pericia-name">Iniciativa</span>
+                                <span class="pericia-attr">(AGI)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Profissão</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Sobrevivência</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                            <div class="pericia-item" data-attr="int">
+                                <span class="pericia-name">Tática</span>
+                                <span class="pericia-attr">(INT)</span>
+                                <select class="pericia-nivel">
+                                    <option value="0">Destreinado</option>
+                                    <option value="5">Treinado (+5)</option>
+                                    <option value="10">Veterano (+10)</option>
+                                    <option value="15">Expert (+15)</option>
+                                </select>
+                                <span class="pericia-total">+0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Itens Tab -->
+                    <div id="itens" class="tab-content">
+                        <div class="add-item-form">
+                            <h3><i class="fas fa-plus"></i> Adicionar Item</h3>
+                            <div class="form-grid">
+                                <input type="text" id="item-nome" placeholder="Nome do item" required>
+                                <input type="text" id="item-peso" placeholder="Peso" >
+                                <textarea id="item-descricao" placeholder="Descrição" rows="2"></textarea>
+                                <input type="text" id="item-dano" placeholder="Dano (se aplicável)">
+                                <input type="text" id="item-critico" placeholder="Crítico">
+                                <input type="text" id="item-multiplicador" placeholder="Multiplicador">
+                            </div>
+                            <button type="button" class="btn-add" onclick="addItem()">
+                                <i class="fas fa-plus"></i> Adicionar Item
+                            </button>
+                        </div>
+                        <div class="items-list" id="items-list">
+                            <!-- Items will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Rituais Tab -->
+                    <div id="rituais" class="tab-content">
+                        <div class="add-ritual-form">
+                            <h3><i class="fas fa-plus"></i> Adicionar Ritual</h3>
+                            <div class="form-grid">
+                                <input type="text" id="ritual-nome" placeholder="Nome do ritual" required>
+                                <select id="ritual-elemento">
+                                    <option value="medo">Medo</option>
+                                    <option value="conhecimento">Conhecimento</option>
+                                    <option value="energia">Energia</option>
+                                    <option value="sangue">Sangue</option>
+                                    <option value="morte">Morte</option>
+                                </select>
+                                <input type="number" id="ritual-esforco" placeholder="Custo de esforço" min="0">
+                                <input type="text" id="ritual-alcance" placeholder="Alcance">
+                                <textarea id="ritual-efeito" placeholder="Efeito" rows="2"></textarea>
+                                <textarea id="ritual-descricao" placeholder="Descrição detalhada" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn-add" onclick="addRitual()">
+                                <i class="fas fa-plus"></i> Adicionar Ritual
+                            </button>
+                        </div>
+                        <div class="rituals-list" id="rituals-list">
+                            <!-- Rituals will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Habilidades Tab -->
+                    <div id="habilidades" class="tab-content">
+                        <div class="add-ability-form">
+                            <h3><i class="fas fa-plus"></i> Adicionar Habilidade</h3>
+                            <div class="form-grid">
+                                <input type="text" id="habilidade-nome" placeholder="Nome da habilidade" required>
+                                <textarea id="habilidade-descricao" placeholder="Descrição" rows="2"></textarea>
+                                <textarea id="habilidade-afinidade" placeholder="Descrição com afinidade" rows="2"></textarea>
+                            </div>
+                            <button type="button" class="btn-add" onclick="addHabilidade()">
+                                <i class="fas fa-plus"></i> Adicionar Habilidade
+                            </button>
+                        </div>
+                        <div class="abilities-list" id="abilities-list">
+                            <!-- Abilities will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Save Controls -->
+                    <div class="save-controls">
+                        <button type="button" class="btn-save" onclick="saveCharacter()">
+                            <i class="fas fa-download"></i> Salvar Personagem
+                        </button>
+                        <button type="button" class="btn-load" onclick="loadCharacter()">
+                            <i class="fas fa-upload"></i> Carregar Personagem
+                        </button>
+                        <button type="button" class="btn-reset" onclick="resetCharacter()">
+                            <i class="fas fa-trash"></i> Resetar Ficha
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TESTE COMPLETO-->
+    <!--Fim do teste-->
+    <iframe src="https://griffin171.github.io/diceRPG/" frameborder="0" margin="0"; width="100%" height="950px"></iframe>
+    <script src="scriptFichas.js"></script>
+</body>
+</html>
