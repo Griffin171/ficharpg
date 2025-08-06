@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 5 de resistencia a qualquer dano! (essa resistencia SOME quando vc tomar os 5 de dano)-->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -117,6 +118,8 @@
     </section>
   </main>
 
+  <p style="color: transparent; background-color: #181818; cursor: default;">+1 Sanidade Permanente</p>
+
 <!--TERMINAL INICIO-->
   <!-- Botão invisível para abrir o terminal -->
   <button id="secretBtn" style="position:fixed; bottom:10px; right:10px; opacity:0.005;">Abrir Console</button>
@@ -129,6 +132,8 @@
     </div>
     <div id="terminalContent"></div>
   </div>
+
+  <input id="secretInput" type="text" style="opacity:0; position:absolute; pointer-events:none;" />
   
   <script>
   const secretBtn = document.getElementById('secretBtn');
@@ -190,9 +195,58 @@
 
   secretBtn.addEventListener('click', iniciarTerminal);
   closeBtn.addEventListener('click', fecharTerminal);
+
+  function toggleTransparent() {
+    const segredo3 = document.getElementById('segredo3');
+    const texto3 = document.getElementById('texto3');
+    texto3.classList.toggle('hidden');
+    segredo3.classList.toggle('transparentBtn');
+  }
+
+  //typed secret
+  let typed = "";
+  const input = document.getElementById("secretInput");
+
+  // Foca o campo invisível no carregamento
+  window.addEventListener("load", () => {
+    input.focus();
+  });
+
+  // Monitora a digitação
+  input.addEventListener("input", () => {
+    typed += input.value.toLowerCase();
+    input.value = ""; // limpa pra próximo caractere
+
+    if (typed.includes("segredo")) {
+      alert("Recupera 5 PV (Quando quiser!).");
+      typed = "";
+    }
+
+    if (typed.includes("terminal")) {
+      window.location.href = "terminal.html"; // Redireciona para a página do terminal
+      typed = "";
+    }
+  });
+
+  // Refoca ao tocar na tela
+  document.addEventListener("touchstart", () => {
+    input.focus();
+  });
+
+  let LIMITE = 10; // Defina o limite de caracteres
+  // Reseta o campo se atingir o limite
+  input.addEventListener("input", () => {
+    if (input.value.length >= LIMITE) {
+      input.value = ""; // limpa o campo
+      console.log("Limite atingido! Resetando.");
+    }
+  });
+
+console.log("Chegou até aqui.");
 </script>
 
-
+<button id="segredo3" onclick="toggleTransparent()" class="transparentBtn"></button>
+<p id="texto3" class="hidden">+2 Esquiva (1 Sessão)</p>
 <!--TERMINAL FIM-->
 
   <!--FLOR (animation canceled due to performance issues)-->
@@ -205,30 +259,38 @@
     <div class="centro"></div>
   </div>
   -->
-
+  <p id="certeza" class="hidden" style="text-align: center;">d0e6 pr3ec7ise ta2lv0ez f6o7r2a v8oç1e d9e3 a4ju1d5a | 6d65646f⬡ </p>
   <!--Flores Estáticas-->
   <footer class="footer-imgs">
-    <img src="pngwing.com (1).png" alt="Imagem 1" id="flor3">
+    <div style="display: flex;" onclick="teste()" id="teste">
+      <img src="pngwing.com (1).png" alt="Imagem 1" id="flor3">    
+    </div>
     <img src="pngwing.com (1).png" alt="Imagem 2" id="flor4">
   </footer>
   <!--FIM-->
+  <div id="descrição" style="cursor: default; position: fixed; bottom: 5%; left: 0; color: black; z-index: 99;" class="hidden">+1 PV Permanente</div>
   <img src="54cd9925-5619-447f-88b4-a644a35ddf6c.webp" alt="Image" style="position: fixed; width: 100%; height: 100%;" class="hidden">
   <script src="script.js"></script>
   <script>
     let cliques = 0;
     const botaomestre = document.getElementById('botaomestre');
     const imagem = document.querySelector('img[alt="Image"]');
+    const descrição = document.getElementById('descrição');
     botaomestre.addEventListener('click', () => {
       cliques++;
       if (cliques === 5) {
         imagem.classList.remove('hidden');
         imagem.style.display = 'block';
+        descrição.classList.remove('hidden');
+        descrição.style.display = 'block';
         setTimeout(() => {
           imagem.style.display = 'none';
+          descrição.style.display = 'none';
           cliques = 0;
         }, 1000); // Esconde a imagem após 1 segundo
       } else if (cliques > 5) {
         imagem.style.display = 'none';
+        descrição.style.display = 'none';
         cliques = 0;
       }
     });
@@ -251,6 +313,15 @@
       //flor.appendChild(petala);
       //flor2.appendChild(petala.cloneNode(true)); // Clone para a segunda flor
   //}
+  </script>
+
+  <script>
+    // Função para o sexto segredo
+    function teste() {
+      const certezatxt = document.getElementById('certeza');
+      certezatxt.classList.toggle('hidden');
+      console.log("base64");
+      }
   </script>
 </body>
 </html>
