@@ -226,6 +226,15 @@ header {
   display: none;
 }
 
+.transparentBtn {
+  color: transparent;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+
 /* TITULO */
 #typewriter {
   font-family: monospace;
@@ -339,4 +348,27 @@ header {
 @keyframes pulsar {
   0%, 100% { box-shadow: 0 0 15px crimson, 0 0 30px crimson inset; }
   50% { box-shadow: 0 0 30px crimson, 0 0 60px crimson inset; }
+}
+
+
+/* segredinhos */
+#segredo3 {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 29%;
+  left: 60.5%;
+  cursor: default;
+}
+@media (max-width: 768px) {
+  #segredo3 {
+    top: 33%;
+    left: 49%;
+  }
+}
+
+#texto3 {
+  position: absolute; 
+  right: 0; 
+  top: 20%;
 }
