@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <style>
+        body {
+            background-color: #181818;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #output div {
+            white-space: pre-wrap;
+        }
+
+        .terminal {
+            background-color: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 10px;
+            height: 600px;
+            overflow-y: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        .prompt {
+            display: flex;
+            align-items: center;
+        }
+
+        .prompt span {
+            margin-right: 5px;
+        }
+
+        .prompt input {
+            background: none;
+            border: none;
+            color: #0f0;
+            outline: none;
+            width: 100%;
+            font-family: monospace;
+        }
+
+        #terminal-output {
+            white-space: pre;
+            font-family: monospace;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="terminal" class="terminal" onclick="focusInput()">
+        <div id="output"></div>
+        <div class="prompt">
+            <span>&gt;</span>
+            <input id="commandInput" type="text" autofocus />
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById("commandInput");
+        const output = document.getElementById("output");
+        const terminal = document.getElementById("terminal");
+
+        function focusInput() {
+        input.focus();
+        }
+
+        input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            const command = input.value.trim();
+            processCommand(command);
+            input.value = "";
+        }
+        });
+
+        function processCommand(cmd) {
+        const [type, ...rest] = cmd.split(" ");
+        const value = rest.join(" ");
+        let result = "";
+
+        switch (type.toLowerCase()) {
+            case "hex":
+            result = hexDecode(value);
+            break;
+            case "b64":
+            result = base64Decode(value);
+            break;
+            case "rot13":
+            result = rot13(value);
+            break;
+            case "didi":
+            result = "Didi não está disponível no momento, talvez ela esteja dormindo ou fumando um.";
+            break;
+            case "fremo":
+            result = "Fremo não está disponível no momento, talvez ele esteja atrás de uma criança.";
+            break;
+            case "otavio":
+            result = "Otávio não está disponível no momento, talvez ele esteja se preparando para nos matar.";
+            break;
+            case "aton":
+            result = "Aton não está disponível no momento, talvez ele esteja planejando destruir a ordem.";
+            break;
+            case "griffin":arguments
+            result = "Griffin não está disponível no momento, talvez ele esteja atrás de uma mulher com franja.";
+            break;
+            case "exit":
+            printLine("Saindo do terminal...");
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redireciona para a página inicial
+            }, 1000);
+            return;
+            case "clear":
+            output.innerHTML = "";
+            return;
+            case "help":
+                result = 'Comandos disponíveis:\n' +
+                        'hex [hexadecimal] - Decodifica uma string hexadecimal\n' +
+                        'b64 [base64] - Decodifica uma string base64\n' +
+                        'rot13 [texto] - Aplica a cifra ROT13 ao texto\n' +
+                        'didi - Informação sobre Didi\n' +
+                        'fremo - Informação sobre Fremo\n' +
+                        'otavio - Informação sobre Otávio\n' +
+                        'aton - Informação sobre Aton\n' +
+                        'clear - Limpa o terminal\n' +
+                        'exit - Sai do terminal\n' +
+                        'help - Mostra esta ajuda';
+                break;
+            default:
+            result = `Comando não reconhecido: ${type}`;
+        }
+
+        printLine(`> ${cmd}`);
+        printLine(result);
+        }
+
+        function printLine(text) {
+        const line = document.createElement("div");
+        line.textContent = text;
+        output.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function hexDecode(hex) {
+        try {
+            return hex.match(/.{1,2}/g)
+            .map(byte => String.fromCharCode(parseInt(byte, 16)))
+            .join('');
+        } catch {
+            return "Erro: hexadecimal inválido";
+        }
+        }
+
+        function base64Decode(b64) {
+        try {
+            return atob(b64);
+        } catch {
+            return "Erro: base64 inválido";
+        }
+        }
+
+        function rot13(str) {
+        return str.replace(/[a-zA-Z]/g, (c) => {
+            const base = c <= 'Z' ? 65 : 97;
+            return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+        });
+        }
+
+    </script>
+</body>
+</html>
