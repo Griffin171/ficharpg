@@ -127,7 +127,20 @@
                         'aton - Informação sobre Aton\n' +
                         'clear - Limpa o terminal\n' +
                         'exit - Sai do terminal\n' +
-                        'help - Mostra esta ajuda';
+                        'help - Mostra esta ajuda\n' +
+                        'url - Redireciona para o vídeo do YouTube';
+                break;
+            case "url":
+                if (!value) {
+                    result = "Erro: forneça o ID do vídeo. Ex: url dQw4w9WgXcQ";
+                } else {
+                    printLine(`> ${cmd}`);
+                    printLine("Redirecionando para o vídeo...");
+                    setTimeout(() => {
+                        window.location.href = `https://www.youtube.com/watch?v=${value}`;
+                    }, 1000);
+                    return;
+                }
                 break;
             default:
             result = `Comando não reconhecido: ${type}`;
