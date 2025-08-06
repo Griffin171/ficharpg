@@ -318,6 +318,18 @@ console.log("Chegou até aqui.");
       //flor.appendChild(petala);
       //flor2.appendChild(petala.cloneNode(true)); // Clone para a segunda flor
   //}
+    (function () {
+          const agora = new Date();
+          const hora = agora.getHours();
+      
+          const dentroDoHorario = hora >= 1 && hora < 3;
+          const alertaJaMostrado = sessionStorage.getItem("alertaNoturno") === "true";
+      
+          if (dentroDoHorario && !alertaJaMostrado) {
+              alert("🕐 Você encontrou a sétima e última recompensa, +5 de PE permanente.");
+              sessionStorage.setItem("alertaNoturno", "true");
+          }
+      })();
   </script>
 
   <script>
@@ -328,5 +340,7 @@ console.log("Chegou até aqui.");
       console.log("base64");
       }
   </script>
+
 </body>
 </html>
+
