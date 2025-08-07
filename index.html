@@ -322,7 +322,7 @@ console.log("Chegou até aqui.");
           const agora = new Date();
           const hora = agora.getHours();
       
-          const dentroDoHorario = hora >= 1 && hora < 3;
+          const dentroDoHorario = hora >= 3 && hora < 5;
           const alertaJaMostrado = sessionStorage.getItem("alertaNoturno") === "true";
       
           if (dentroDoHorario && !alertaJaMostrado) {
@@ -343,5 +343,6 @@ console.log("Chegou até aqui.");
 
 </body>
 </html>
+
 
 
